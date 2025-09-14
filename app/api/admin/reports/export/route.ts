@@ -29,21 +29,21 @@ export async function POST(request: NextRequest) {
       const pdfBuffer = await generatePDF(htmlContent)
       console.log('PDF generated successfully');
       
-      return new NextResponse(pdfBuffer, {
-        headers: {
+      return new NextResponse(pdfBuffer.toString('base64'), {  
+        headers: {  
           'Content-Type': 'application/pdf',
           'Content-Disposition': `attachment; filename="atlantic-leather-report-${new Date().toISOString().split('T')[0]}.pdf"`
-        }
+        } as any
       })
     } catch (pdfError) {
       console.log('PDF generation failed, falling back to HTML:', pdfError);
       
       // Return HTML as fallback
-      return new NextResponse(htmlContent, {
+      return new NextResponse(htmlContent as any, {
         headers: {
           'Content-Type': 'text/html',
           'Content-Disposition': `attachment; filename="atlantic-leather-report-${new Date().toISOString().split('T')[0]}.html"`
-        }
+        } as any
       })
     }
 

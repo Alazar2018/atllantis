@@ -50,11 +50,11 @@ export async function POST(
       const pdfBuffer = await generatePDF(htmlContent)
       console.log('PDF generated successfully');
       
-      return new NextResponse(pdfBuffer, {
+      return new NextResponse(pdfBuffer.toString('base64'), {
         headers: {
           'Content-Type': 'application/pdf',
           'Content-Disposition': `attachment; filename="receipt-order-${orderId}.pdf"`
-        }
+        } as any
       })
     } catch (pdfError) {
       console.log('PDF generation failed, falling back to HTML:', pdfError);
@@ -64,7 +64,7 @@ export async function POST(
         headers: {
           'Content-Type': 'text/html',
           'Content-Disposition': `attachment; filename="receipt-order-${orderId}.html"`
-        }
+        } as any            
       })
     }
 
