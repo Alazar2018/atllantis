@@ -139,7 +139,7 @@ cd /var/www
 
 # Note: You'll need to replace this with your actual repository URL
 echo "Please clone your repository manually:"
-echo "git clone https://github.com/your-username/altantis.git"
+echo "git clone https://github.com/Alazar2018/atllantis.git"
 echo "Then run this script again."
 echo ""
 echo "Or if you've already cloned it, press Enter to continue..."
